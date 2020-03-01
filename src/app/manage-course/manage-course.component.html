@@ -1,0 +1,36 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="jumbotron">
+                <h3>Manage Course</h3>
+                <form [formGroup]="courseForm" (ngSubmit)="addCourse()">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Course Name</mat-label>
+                        <input matInput formControlName="name" />
+                    </mat-form-field>
+                    <br />
+                    <mat-form-field appearance="outline">
+                        <mat-label>Description</mat-label>
+                        <textarea matInput formControlName="description" ></textarea>
+                    </mat-form-field>
+                    <br />
+                    <mat-form-field appearance="outline">
+                        <mat-label>Duration (months)</mat-label>
+                        <mat-select formControlName="duration">
+                            <mat-option *ngFor="let i of maxCourseDuration" value="{{i}}">{{i}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <br />
+                    <mat-form-field appearance="outline">
+                        <mat-label>Fees</mat-label>
+                        <input matInput formControlName="fees" />
+                    </mat-form-field>
+                    <br />
+                    <button mat-raised-button [disabled]="courseForm.invalid" color="primary">Add Course</button>
+                    &nbsp;
+                    <button mat-raised-button type="reset" color="warn">Reset</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
