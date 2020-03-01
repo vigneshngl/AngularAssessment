@@ -32,6 +32,16 @@
                         <mat-header-cell *matHeaderCellDef mat-sort-header>Fees</mat-header-cell>
                         <mat-cell *matCellDef="let element">{{element.fees | currency : "INR"}}</mat-cell>
                     </ng-container>
+                    <ng-container matColumnDef="edit">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>
+                        <mat-cell *matCellDef="let element">
+                            <button mat-raised-button color="primary" 
+                                (click)="editCourse(element)">Edit</button>
+                            &nbsp;
+                            <button mat-raised-button color="warn"
+                                (click)="deleteCourse(element)">Delete</button>
+                        </mat-cell>
+                    </ng-container>
                     
                     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
                     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>

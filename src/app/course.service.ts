@@ -24,10 +24,10 @@ export class CourseService {
   }
 
   editCourse(course) {
-    return this.httpClient.put(this.courseUrl, course)
+    return this.httpClient.put(`${this.courseUrl}/${course.id}`, course)
   }
 
   removeCourse(course) {
-    return this.httpClient.delete(this.courseUrl, course)
+    return this.httpClient.delete(`${this.courseUrl}/${course.id}`)
   }
 }
