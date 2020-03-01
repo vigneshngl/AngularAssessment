@@ -6,7 +6,10 @@
     </div>
     <div class="row">
         <div class="col-sm-12">
-            <mat-form-field>
+            <button mat-raised-button color="primary" 
+                                (click)="addCourse()">Add Course</button>
+            <span class="example-spacer"></span>
+            <mat-form-field class="fixRight">
                 <mat-label>Filter</mat-label>
                 <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium">
             </mat-form-field>

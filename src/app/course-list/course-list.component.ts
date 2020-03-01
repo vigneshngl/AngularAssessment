@@ -37,6 +37,10 @@ export class CourseListComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  addCourse() {
+    this.router.navigate(["course"])
+  }
+
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
