@@ -1,3 +1,18 @@
 {
-    "courses" : []
+  "courses": [
+    {
+      "name": "Angular",
+      "description": "Angular training program",
+      "duration": "2",
+      "fees": "1000",
+      "id": 1
+    },
+    {
+      "name": "DevOps",
+      "description": "DevOps training program",
+      "duration": "1",
+      "fees": "2000",
+      "id": 2
+    }
+  ]
 }

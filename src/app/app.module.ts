@@ -7,6 +7,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
+import { MatTableModule } from '@angular/material/table';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -16,6 +17,10 @@ import { SideNavComponent } from './side-nav/side-nav.component';
 import { SignupComponent } from './signup/signup.component';
 import { ManageCourseComponent } from './manage-course/manage-course.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CourseListComponent } from './course-list/course-list.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -23,7 +28,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     HeaderComponent,
     SideNavComponent,
     SignupComponent,
-    ManageCourseComponent
+    ManageCourseComponent,
+    CourseListComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +42,11 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatInputModule,
     MatRadioModule,
     MatSelectModule,
-    MatButtonModule
+    MatButtonModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

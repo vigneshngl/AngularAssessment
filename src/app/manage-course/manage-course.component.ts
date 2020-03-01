@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Course } from '../classes/Course';
+import { CourseService } from '../course.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-manage-course',
@@ -11,7 +14,7 @@ export class ManageCourseComponent implements OnInit {
   courseForm : FormGroup
   maxCourseDuration = Array(12).fill(0).map((x, i) => i + 1)
 
-  constructor() { }
+  constructor(private courseService : CourseService, private router : Router) { }
 
   ngOnInit(): void {
     this.courseForm = new FormGroup({
@@ -23,6 +26,10 @@ export class ManageCourseComponent implements OnInit {
   }
 
   addCourse() {
-
+    let newCourse : Course = this.courseForm.value
+    this.courseService.addNewCourse(newCourse).subscribe(data => {
+      this.router.navigate(["courses"])
+      return false
+    })
   }
 }
