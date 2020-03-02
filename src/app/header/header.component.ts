@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { LoginDialogComponent } from '../login-dialog/login-dialog.component';
+import { AuthService } from '../auth.service';
+import { MatDialog } from '@angular/material/dialog';
+import { Student } from '../classes/Student';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +11,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(private authService : AuthService, private dialog : MatDialog) { }
 
   ngOnInit(): void {
   }
 
+  login() {    
+    let loginStudent = new Student()    
+    const dialogRef = this.dialog.open(LoginDialogComponent, { width : '475px', data : { loginStudent } })
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result.email + " " + result.password)
+      this.authService.login(result.email, result.password)
+    })
+  }
+
+  logout() {
+    this.authService.logout();
+  }
 }
