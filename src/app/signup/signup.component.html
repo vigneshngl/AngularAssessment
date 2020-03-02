@@ -1,49 +1,70 @@
-<!-- <form [formGroup]="signupForm">
-    <mat-form-field appearance="outline">
-        <mat-label>Name</mat-label>
-        <input matInput [formControl]="name" required />
-        <mat-error *ngIf="name.invalid">Enter a valid name</mat-error>
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-        <mat-label>Education</mat-label>
-        <mat-select>
-            <mat-option value="option">Option</mat-option>
-        </mat-select>
-        <mat-error *ngIf="name.invalid">Enter a valid name</mat-error>
-    </mat-form-field>
-    <mat-radio-group [formControl]="gender">
-        <mat-radio-button value="male">Male</mat-radio-button>
-        <mat-radio-button value="female">Female</mat-radio-button>
-    </mat-radio-group>
-    <mat-form-field appearance="outline">
-        <mat-label>Email</mat-label>
-        <input matInput [formControl]="email" required />
-        <mat-error *ngIf="email.invalid">Enter valid email</mat-error>
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-        <mat-label>Password</mat-label>
-        <input matInput type="password" [formControl]="password" required />
-        <mat-error *ngIf="password.invalid">Enter valid password</mat-error>
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-        <mat-label>Passing year</mat-label>
-        <mat-select>
-            <mat-option value="option">Option</mat-option>
-        </mat-select>
-        <mat-error *ngIf="name.invalid">Enter a valid name</mat-error>
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-        <mat-label>Experience in years</mat-label>
-        <mat-select>
-            <mat-option value="option">Option</mat-option>
-        </mat-select>
-        <mat-error *ngIf="name.invalid">Enter a valid name</mat-error>
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-        <mat-label>Courses</mat-label>
-        <mat-select>
-            <mat-option value="option">Option</mat-option>
-        </mat-select>
-        <mat-error *ngIf="name.invalid">Enter a valid name</mat-error>
-    </mat-form-field>
-</form> -->
+<div class="container marginTop">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="jumbotron">
+                <h3>Sign up</h3> 
+                <form [formGroup]="signupForm" (ngSubmit)="signup()">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Name</mat-label>
+                        <input matInput formControlName="name" required />
+                        <!-- <mat-error *ngIf="signupForm.name.invalid">Enter a valid name</mat-error> -->
+                    </mat-form-field>
+                    <br />
+                    <mat-form-field appearance="outline">
+                        <mat-label>Education</mat-label>
+                        <mat-select formControlName="education">
+                            <mat-option *ngFor="let ed of educations" value="ed">{{ed}}</mat-option>
+                        </mat-select>
+                        <!-- <mat-error *ngIf="signupForm.education.invalid">Enter a valid name</mat-error> -->
+                    </mat-form-field>
+                    <br />
+                    <mat-radio-group formControlName="gender">
+                        <mat-radio-button value="male">Male</mat-radio-button>
+                        &nbsp;
+                        <mat-radio-button value="female">Female</mat-radio-button>
+                    </mat-radio-group>
+                    <br />
+                    <mat-form-field appearance="outline">
+                        <mat-label>Email</mat-label>
+                        <input matInput formControlName="email" required />
+                        <!-- <mat-error *ngIf="signupForm.email.invalid">Enter valid email</mat-error> -->
+                    </mat-form-field>
+                    <br />
+                    <mat-form-field appearance="outline">
+                        <mat-label>Password</mat-label>
+                        <input matInput type="password" formControlName="password" required />
+                        <!-- <mat-error *ngIf="signupForm.password.invalid">Enter valid password</mat-error> -->
+                    </mat-form-field>
+                    <br />
+                    <mat-form-field appearance="outline">
+                        <mat-label>Passing year</mat-label>
+                        <mat-select formControlName="passyear">
+                            <mat-option *ngFor="let p of passyears" value="p">{{p}}</mat-option>
+                        </mat-select>
+                        <!-- <mat-error *ngIf="signupForm.passyear.invalid">Select passing year</mat-error> -->
+                    </mat-form-field>
+                    <br />
+                    <mat-form-field appearance="outline">
+                        <mat-label>Experience in years</mat-label>
+                        <mat-select formControlName="experience">
+                            <mat-option *ngFor="let e of experiences" value="e">{{e}}</mat-option>
+                        </mat-select>
+                        <!-- <mat-error *ngIf="signupForm.experience.invalid">Select years of experience</mat-error> -->
+                    </mat-form-field>
+                    <br />
+                    <mat-form-field appearance="outline">
+                        <mat-label>Course</mat-label>
+                        <mat-select formControlName="course">
+                            <mat-option *ngFor="let c of courses" value="c.name">{{c.name}}</mat-option>
+                        </mat-select>
+                        <!-- <mat-error *ngIf="signupForm.course.invalid">Select course name</mat-error> -->
+                    </mat-form-field>
+                    <br />
+                    <button mat-raised-button [disabled]="signupForm.invalid" color="primary">Save</button>
+                    &nbsp;
+                    <button mat-raised-button type="reset" color="warn">Reset</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
