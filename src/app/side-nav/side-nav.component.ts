@@ -14,6 +14,10 @@ export class SideNavComponent implements OnInit {
   }
 
   openCourseDashboard() {
-    this.router.navigate(["/course"])
+    this.router.navigate(["/courses"])
+  }
+
+  openStudentDashboard() {
+    this.router.navigate(["/students"])
   }
 }

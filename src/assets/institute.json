@@ -14,5 +14,18 @@
       "fees": "1500",
       "id": 3
     }
+  ],
+  "students": [
+    {
+      "name": "Arun",
+      "education": "B.E",
+      "gender": "male",
+      "email": "arun@test.com",
+      "password": "arun123",
+      "passyear": "2000",
+      "experience": "2",
+      "course": "DevOps",
+      "id": 2
+    }
   ]
 }

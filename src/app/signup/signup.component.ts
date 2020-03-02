@@ -3,6 +3,8 @@ import { CourseService } from '../course.service';
 import { Course } from '../classes/Course';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Student } from '../classes/Student';
+import { StudentService } from '../student.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -17,7 +19,8 @@ export class SignupComponent implements OnInit {
   educations = [ "B.E", "B.Tech", "M.C.A", "B.C.A" ]
   signupForm : FormGroup
 
-  constructor(private courseService : CourseService) { 
+  constructor(private courseService : CourseService, private studentService : StudentService,
+    private router : Router) { 
     this.courseService.getAllCourses().subscribe(data => {
       this.courses = data
     })
@@ -42,6 +45,8 @@ export class SignupComponent implements OnInit {
   }
 
   signup() {
-
+    this.studentService.addNewStudent(this.signupForm.value).subscribe(data => {
+      this.router.navigate(["students"])
+    })
   }
 }

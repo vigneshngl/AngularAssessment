@@ -21,6 +21,7 @@ import { CourseListComponent } from './course-list/course-list.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { HttpClientModule } from '@angular/common/http';
+import { StudentsListComponent } from './students-list/students-list.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { HttpClientModule } from '@angular/common/http';
     SideNavComponent,
     SignupComponent,
     ManageCourseComponent,
-    CourseListComponent
+    CourseListComponent,
+    StudentsListComponent
   ],
   imports: [
     BrowserModule,

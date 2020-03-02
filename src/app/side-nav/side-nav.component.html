@@ -1,5 +1,5 @@
-<button mat-button [matMenuTriggerFor]="menu">Dashboard</button>
+<button mat-button [matMenuTriggerFor]="menu">Dashboards</button>
 <mat-menu #menu="matMenu">
   <button mat-menu-item (click)="openCourseDashboard()">Course</button>
-  <button mat-menu-item>Student</button>
+  <button mat-menu-item (click)="openStudentDashboard()">Student</button>
 </mat-menu>
