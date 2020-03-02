@@ -17,7 +17,7 @@
   ],
   "students": [
     {
-      "name": "Arun",
+      "name": "Arun V",
       "education": "B.E",
       "gender": "male",
       "email": "arun@test.com",
@@ -26,6 +26,17 @@
       "experience": "2",
       "course": "DevOps",
       "id": 2
+    },
+    {
+      "name": "Sriram",
+      "education": "B.E",
+      "gender": "male",
+      "email": "sriram@test.com",
+      "password": "srir123",
+      "passyear": "2000",
+      "experience": "2",
+      "course": "Python",
+      "id": 3
     }
   ]
 }

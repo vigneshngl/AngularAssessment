@@ -55,7 +55,6 @@ export class ManageCourseComponent implements OnInit {
       })
     } else {
       let course : Course = this.courseForm.value
-      console.log(course)
       course.id = this.course.id
       this.courseService.editCourse(course).toPromise().then((error) => {
         this.router.navigate(["courses"])

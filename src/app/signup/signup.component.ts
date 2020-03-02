@@ -4,7 +4,7 @@ import { Course } from '../classes/Course';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Student } from '../classes/Student';
 import { StudentService } from '../student.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -18,9 +18,12 @@ export class SignupComponent implements OnInit {
   courses : Course[] = []
   educations = [ "B.E", "B.Tech", "M.C.A", "B.C.A" ]
   signupForm : FormGroup
+  id : number
+  isAddPage : boolean
+  student : Student
 
   constructor(private courseService : CourseService, private studentService : StudentService,
-    private router : Router) { 
+    private router : Router, private activatedRoute : ActivatedRoute) { 
     this.courseService.getAllCourses().subscribe(data => {
       this.courses = data
     })
@@ -29,6 +32,21 @@ export class SignupComponent implements OnInit {
   ngOnInit(): void {
     let newStudent = new Student()
     this.loadFormData(newStudent)
+
+    this.activatedRoute.params.subscribe(params => { 
+      this.id = params["id"]
+      if (this.id === undefined) {
+        this.isAddPage = true
+        this.student = new Student()
+        this.loadFormData(this.student)
+      } else {
+        this.isAddPage = false
+        this.studentService.getStudent(this.id).subscribe(data => {
+          this.student = data
+          this.loadFormData(this.student)
+        })
+      }
+    })
   }
 
   loadFormData(student : Student) {
@@ -44,9 +62,20 @@ export class SignupComponent implements OnInit {
     })
   }
 
-  signup() {
-    this.studentService.addNewStudent(this.signupForm.value).subscribe(data => {
-      this.router.navigate(["students"])
-    })
+  signup() {    
+    if (this.isAddPage) {
+      let newStudent : Student = this.signupForm.value
+      this.studentService.addNewStudent(newStudent).subscribe(data => {
+        this.router.navigate(["students"])
+        return false
+      })
+    } else {
+      let student : Student = this.signupForm.value
+      student.id = this.student.id
+      this.studentService.updateStudentDetail(student).toPromise().then((error) => {
+        this.router.navigate(["students"])
+        return false
+      })
+    }
   }
 }

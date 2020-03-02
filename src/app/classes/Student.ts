@@ -8,7 +8,6 @@ export class Student {
     passyear: number
     experience: number
     course: string
-    
 
     constructor(values : Object = {}) {
         Object.assign(this, values)
