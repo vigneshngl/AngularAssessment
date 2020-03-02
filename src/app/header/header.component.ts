@@ -21,7 +21,6 @@ export class HeaderComponent implements OnInit {
     const dialogRef = this.dialog.open(LoginDialogComponent, { width : '475px', data : { loginStudent } })
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(result.email + " " + result.password)
       this.authService.login(result.email, result.password)
     })
   }
