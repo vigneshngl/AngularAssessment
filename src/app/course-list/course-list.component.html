@@ -1,14 +1,13 @@
-<div class="container">
+<div class="container marginTop">
     <div class="row">
         <div class="col-sm-12">
-            <h5>Courses</h5>
+            <h2>Courses</h2>
         </div>
     </div>
     <div class="row">
         <div class="col-sm-12">
             <button mat-raised-button color="primary" 
                                 (click)="addCourse()">Add Course</button>
-            <span class="example-spacer"></span>
             <mat-form-field class="fixRight">
                 <mat-label>Filter</mat-label>
                 <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium">

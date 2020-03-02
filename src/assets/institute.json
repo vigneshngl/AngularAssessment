@@ -6,6 +6,13 @@
       "duration": "1",
       "fees": "2000",
       "id": 2
+    },
+    {
+      "name": "Python",
+      "description": "Python with machine learning training",
+      "duration": "1",
+      "fees": "1500",
+      "id": 3
     }
   ]
 }

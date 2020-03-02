@@ -23,16 +23,18 @@ export class ManageCourseComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => { 
       this.id = params["id"]
-      this.isAddPage = false
-
-      this.courseService.getCourse(this.id).subscribe(data => {
-        this.course = data
+      if (this.id === undefined) {
+        this.isAddPage = true
+        this.course = new Course()
         this.loadFormData(this.course)
-      })
-    })
-
-    this.course = new Course()
-    this.loadFormData(this.course)
+      } else {
+        this.isAddPage = false
+        this.courseService.getCourse(this.id).subscribe(data => {
+          this.course = data
+          this.loadFormData(this.course)
+        })
+      }
+    })   
   }
 
   loadFormData(course : Course) {
