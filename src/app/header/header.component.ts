@@ -12,7 +12,6 @@ import { Student } from '../classes/Student';
 export class HeaderComponent implements OnInit {
 
   welcomeText : string
-  loginSuccess : boolean
 
   constructor(private authService : AuthService, private dialog : MatDialog) { }
 
@@ -29,11 +28,9 @@ export class HeaderComponent implements OnInit {
         if (data === false) {
           alert("Please try login again!")
           this.setWelcomeText('')
-          this.loginSuccess = false
         } else {
           loginStudent = data[0] as Student
           this.setWelcomeText(loginStudent.name)
-          this.loginSuccess = true
         }
       })
     })
@@ -44,19 +41,14 @@ export class HeaderComponent implements OnInit {
   }
 
   logout() {
-    this.loginSuccess = false
     this.authService.logout();
   }
 
   showWelcomeText() {
-    // return this.authService.isLoggedIn()
-    let result = (this.loginSuccess === undefined) ? false : this.loginSuccess
-    // console.log(result)
-    return result
+    return this.authService.isLoggedIn()
   }
 
   showLogin() {
-    // return !this.authService.isLoggedIn()
-    return (this.loginSuccess === undefined) ? true : !this.loginSuccess
+    return !this.authService.isLoggedIn()
   }
 }

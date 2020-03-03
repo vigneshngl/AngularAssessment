@@ -23,7 +23,7 @@ export class AuthService {
 
       this.getStudent(email, password).subscribe(data => {
         this.student = data
-        if (this.student === undefined || this.student.email === undefined) {
+        if (this.student[0] === undefined) {
           this.isLoggedin = false
           observer.next(false)
         } else {
