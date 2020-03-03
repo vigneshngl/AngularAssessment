@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Student } from './classes/Student';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,6 +9,7 @@ import { Student } from './classes/Student';
 export class AuthService {
   private isLoggedin : boolean
   empUrl = "http://localhost:3000/students"
+  private student : Student
 
   constructor(private httpClient: HttpClient) { }
 
@@ -17,18 +19,25 @@ export class AuthService {
   }
 
   login(email: string, password: string) {
-    let student : Student
+    return new Observable<boolean | Student>((observer) => {
 
-    this.getStudent(email, password).subscribe(data => {
-      student = data
-      if (student === undefined) {
-        this.isLoggedin = false
-        return false
-      } else {
-        this.isLoggedin = true
-        return student
-      }
-    })    
+      this.getStudent(email, password).subscribe(data => {
+        this.student = data
+        if (this.student === undefined) {
+          this.isLoggedin = false
+          observer.next(false)
+        } else {
+          this.isLoggedin = true
+          observer.next(this.student)
+        }
+      })
+      
+      return { unsubscribe() {} }
+    })
+  }
+
+  getLoggedInStudent() {
+    return this.student
   }
 
   logout() {
