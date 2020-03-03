@@ -4,10 +4,12 @@
       <span class="example-spacer"></span>
       <span *ngIf="showWelcomeText()">{{welcomeText}}</span>
       <span *ngIf="showLogin()" (click)="login()">Login</span>
-      &nbsp;
-      <span *ngIf="showWelcomeText()">|</span>
-      &nbsp;
-      <span *ngIf="showWelcomeText()" (click)="logout()">Logout</span>
+      <span *ngIf="showWelcomeText()">
+        &nbsp;
+        <span>|</span>
+        &nbsp;
+        <span (click)="logout()">Logout</span>
+      </span>
     </mat-toolbar-row>
     <mat-toolbar-row>
       <app-side-nav></app-side-nav>
